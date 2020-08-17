@@ -1,8 +1,15 @@
-<p><%= data.quote  %></p>
-<p><%= data.author %></p>
+<div class="container">
+    
+            <blockquote>
+                <h5><%= data.q  %></h5>
+                <footer>~from <%= data.a %></footer>
+            </blockquote>
 
-<form method="POST" action="/quote">
-    <input type="hidden" name="quote" value="<%= data.q%>" >
-    <input type="hidden" name="author" value="<% data.a %> ">
-    <input type="submit" value="Add to Diary" >
-</form>
+            <form method="POST" action="/diary">
+                <input type="hidden" name="quote" value="<%= data.q %>" >
+                <input type="hidden" name="author" value="<% data.a %> ">
+                <input type="submit" value="Add to Diary" >
+            </form>
+
+       
+</div>
