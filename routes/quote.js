@@ -21,13 +21,12 @@ router.get('/',  (req,res) =>{
 router.post('/', (req,res)=>{
     let newData = req.body;
     db.quote.findOrCreate({
-        where: {content: newData.quote},
-        defaults: {authorName: newData.author}
-        
+        where: {content: newData.quote,
+            authorName: newData.author}
     })
     .then(([newQuote, created]) =>{
         console.log(`Was this created? ${created}`);
-        res.redirect('/profile');
+        res.redirect('/');
     })
 
     .catch(err => {
@@ -35,7 +34,5 @@ router.post('/', (req,res)=>{
         res.send('Sorry, no data')
     })
 });
-
-
 
 module.exports = router

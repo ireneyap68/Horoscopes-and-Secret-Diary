@@ -14,9 +14,9 @@ const axios = require('axios');
 const horos = ['capricorn','aquarius','pisces','aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius'];
 let API_KEY = process.env.API_KEY;
 
-
+var shortDateFormat = "MMMM Do"+", "+"YYYY"; // this is just an example of storing a date format once so you can change it in one place and have it propagate
 app.locals.moment = moment; // this makes moment available as a variable in every EJS page
-
+app.locals.shortDateFormat = shortDateFormat;
 
 // require the authorization middleware at the top of the page
 const isLoggedIn = require('./middleware/isLoggedIn');
@@ -83,10 +83,6 @@ app.use('/profile', isLoggedIn, require('./routes/profile'));
 //   })
 
 // })
-
-
-
-
 
 app.use('/auth', require('./routes/auth'));
 
