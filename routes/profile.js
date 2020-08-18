@@ -1,6 +1,20 @@
 const express = require('express');
 const db = require('../models');
+const { response } = require('express');
 const router = express.Router();
+
+router.get('/', (req, res) => {
+    db.quote.findAll({
+        where: {user: req.userId.quote}
+    })
+    .then((response)=>{
+        console.log(response)
+        res.render('profile', {quote:response});
+    })
+    
+  });
+
+
 
 //add new diary note
 router.post('/', (req,res)=>{

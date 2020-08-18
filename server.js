@@ -15,6 +15,9 @@ const horos = ['capricorn','aquarius','pisces','aries','taurus','gemini','cancer
 let API_KEY = process.env.API_KEY;
 
 
+app.locals.moment = moment; // this makes moment available as a variable in every EJS page
+
+
 // require the authorization middleware at the top of the page
 const isLoggedIn = require('./middleware/isLoggedIn');
 
@@ -65,24 +68,25 @@ app.get('/', (req, res) => {
   } 
 });
 
-app.get('/quote', isLoggedIn, (req,res) =>{
-  const horo = req.query.horo;
-  axios.get('https://zenquotes.io/api/random')
-  .then ((response)=>{
-    console.log(response);
-    res.render('quote', {data:response.data[0]})
-  })
-  .catch(err =>{
-    console.log('error', err)
-  })
+app.use('/quote',isLoggedIn, require('./routes/quote'));
 
-})
+app.use('/profile', isLoggedIn, require('./routes/profile'));
+// app.get('/quote', isLoggedIn, (req,res) =>{
+//   const horo = req.query.horo;
+//   axios.get('https://zenquotes.io/api/random')
+//   .then ((response)=>{
+//     console.log(response);
+//     res.render('quote', {data:response.data[0]})
+//   })
+//   .catch(err =>{
+//     console.log('error', err)
+//   })
+
+// })
 
 
 
-app.get('/profile', isLoggedIn, (req, res) => {
-  res.render('profile');
-});
+
 
 app.use('/auth', require('./routes/auth'));
 
