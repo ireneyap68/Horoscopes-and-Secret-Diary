@@ -1,15 +1,20 @@
-<div class="container">
-    
-            <blockquote>
+<div class="container" style="box-sizing: content-box; height: 500px; justify-content: center;">
+    <div class = "row">
+        <div class="col s12 m5">
+            <div class="card-panel teal">
+            <span class="white-text">
+            
                 <h5><%= data.q  %></h5>
                 <footer>~from <%= data.a %></footer>
-            </blockquote>
-
+            
+            </br>
             <form method="POST" action="/quote">
                 <input type="hidden" name="quote" value="<%= data.q %>" >
                 <input type="hidden" name="author" value="<% data.a %> ">
-                <input type="submit" value="Add to Diary" >
+                <input type="submit" value="Add to Note">
             </form>
-
-       
+            </span>
+            </div>
+        </div>
+    </div>
 </div>

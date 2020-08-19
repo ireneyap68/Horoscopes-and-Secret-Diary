@@ -24,9 +24,12 @@ router.post('/', (req,res)=>{
         where: {content: newData.quote,
             authorName: newData.author}
     })
-    .then(([newQuote, created]) =>{
+    .then(([quote, created]) =>{
         console.log(`Was this created? ${created}`);
-        res.redirect('/');
+        quotes.addContent(quote)
+    })
+    .then(()=>{
+      res.redirect('profile')
     })
 
     .catch(err => {
@@ -34,5 +37,36 @@ router.post('/', (req,res)=>{
         res.send('Sorry, no data')
     })
 });
+
+//get quote id
+router.get('/id:', (req,res) =>{
+  db.quote.findOne({
+    where: {id : req.params.id}
+  })
+  .then((quote)=>{
+    res.render('profile', {quote})
+  })
+  .catch(err =>{
+    console.log('Error', err)
+  })
+  
+})
+
+//delete
+router.delete('/:id', (req, res) =>{
+  //delete the join
+  db.quotes.destroy({
+    where: { quoteId: req.params.id}
+  })
+  .then(destroyQuote =>{
+    res.redirect('profile')
+  })
+  .catch(err =>{
+    res.send('error', err)
+  })
+  .catch(err =>{
+    res.send('error', err)
+  })
+})
 
 module.exports = router

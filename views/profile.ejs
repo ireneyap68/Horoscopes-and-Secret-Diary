@@ -1,29 +1,16 @@
 <h2>Profile Page</h2>
-<h3>Welcome to your SECRET DIARY</h3>
+<h3>SECRET NOTES</h3>
 
-<% if(quotes.length > 0) { %>
+<% if(quote.length > 0) { %>
     <div class = well>
-    <% quotes.forEach(quote =>{ %>
-        <p><%= quote.content %></p>
-        <p><%= quote.author %></p>
+    <% quote.forEach(q =>{ %>
+        <p><%= q.content %></p>
+        <p><%= q.author %></p>
     </div>
     <a href="/profile<%= quote %>">Delete</a>
-        <form method="POST" action="/profile<%= index %>/?_method=DELETE">
+        <form method="POST" action="/profile<%= quote %>/?_method=DELETE">
             <input type="submit" value="Delete">
     <% }) %> 
 <% } else { %>
     <p>No quotes added</p>
 <% }  %>  
-
-
-<ul>
-    <% quotes.forEach(quote =>{  %>
-        <li><%= dino.name %> is a <%= dino.type %></li>
-        <a href="/dinosaurs/edit/<%= index %>">Edit</a>
-        <form method="POST" action="/dinosaurs/<%= index %>/?_method=DELETE">
-            <input type="submit" value="Delete">
-
-        </form>
-
-    <% }) %> 
-</ul>

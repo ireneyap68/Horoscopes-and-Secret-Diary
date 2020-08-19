@@ -20,6 +20,7 @@ app.locals.shortDateFormat = shortDateFormat;
 
 // require the authorization middleware at the top of the page
 const isLoggedIn = require('./middleware/isLoggedIn');
+const db = require('./models');
 
 app.set('view engine', 'ejs');
 
@@ -70,19 +71,13 @@ app.get('/', (req, res) => {
 
 app.use('/quote',isLoggedIn, require('./routes/quote'));
 
-app.use('/profile', isLoggedIn, require('./routes/profile'));
-// app.get('/quote', isLoggedIn, (req,res) =>{
-//   const horo = req.query.horo;
-//   axios.get('https://zenquotes.io/api/random')
-//   .then ((response)=>{
-//     console.log(response);
-//     res.render('quote', {data:response.data[0]})
-//   })
-//   .catch(err =>{
-//     console.log('error', err)
-//   })
+app.get('/profile', (req,res) =>{
+  db.quote.findAll()
+  .then((quote)=>{
+    res.render('profile', {quote:quote})
+  })
+})
 
-// })
 
 app.use('/auth', require('./routes/auth'));
 
