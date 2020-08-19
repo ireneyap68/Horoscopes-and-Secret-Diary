@@ -7,3 +7,9 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+
+.textred {
+  color: brown;
+  font-style: italic;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

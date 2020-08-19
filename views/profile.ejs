@@ -1,16 +1,27 @@
-<h2>Profile Page</h2>
-<h3>SECRET NOTES</h3>
+<div class="container">
+    <div class="row">
+      <div class="col s12">
+        <h2 class="center-align" style="font-style: italic;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">My Secret Notes</h2>
+        
+        <% if(quote.length > 0) { %>
+        <div class="card-panel blue darken-4">
+            <span class="white-text center-align">
+            <ul>
+            <% quote.forEach(q =>{ %>
+                <h5 style="font-style: italic; font-family: 'Times New Roman', Times, serif;"><%= q.content %></h5>
+                <p>Date created: <%= moment(Date()).format(shortDateFormat) %></p>
+            
+                <form method="POST" action="/quote/delete/<%= q.id %>">
+                    <input type="submit" value="Delete">
+                </form>
+            <% }) %> 
+            </ul>
+            <% } else { %>
+                 <p>No quotes added</p>
+            <% }  %> 
+            </span>
+        </div> 
 
-<% if(quote.length > 0) { %>
-    <div class = well>
-    <% quote.forEach(q =>{ %>
-        <p><%= q.content %></p>
-        <p><%= q.author %></p>
+      </div>
     </div>
-    <a href="/profile<%= quote %>">Delete</a>
-        <form method="POST" action="/profile<%= quote %>/?_method=DELETE">
-            <input type="submit" value="Delete">
-    <% }) %> 
-<% } else { %>
-    <p>No quotes added</p>
-<% }  %>  
+</div>

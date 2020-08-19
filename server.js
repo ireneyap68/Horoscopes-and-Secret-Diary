@@ -11,6 +11,7 @@ const moment = require('moment');
 const aztroJs = require('aztro-js');
 const axios = require('axios');
 
+//array list horoscopes
 const horos = ['capricorn','aquarius','pisces','aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius'];
 let API_KEY = process.env.API_KEY;
 
@@ -55,6 +56,7 @@ app.use((req, res, next) => {
   next();
 });
 
+//homepage GET horoscopes set up for loop to dispaly each sign
 app.get('/', (req, res) => {
   const horoscopes = {};
   for (i in horos){
@@ -69,10 +71,14 @@ app.get('/', (req, res) => {
   } 
 });
 
+//quote route
 app.use('/quote',isLoggedIn, require('./routes/quote'));
 
-app.get('/profile', (req,res) =>{
-  db.quote.findAll()
+//favorite page to specific user
+app.get('/profile',isLoggedIn, (req,res) =>{
+  db.quote.findAll({
+            where: {userId: req.user.id}
+        })
   .then((quote)=>{
     res.render('profile', {quote:quote})
   })

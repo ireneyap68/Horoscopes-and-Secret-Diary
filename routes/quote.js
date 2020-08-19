@@ -17,49 +17,33 @@ router.get('/',  (req,res) =>{
   
   })
 
-//add quote to profile
+//add quote to profile:favorite page by using userID
 router.post('/', (req,res)=>{
     let newData = req.body;
     db.quote.findOrCreate({
-        where: {content: newData.quote,
+        where: {userId: req.user.id,
+          content: newData.quote,
             authorName: newData.author}
     })
     .then(([quote, created]) =>{
         console.log(`Was this created? ${created}`);
-        quotes.addContent(quote)
+        res.redirect('profile')
     })
-    .then(()=>{
-      res.redirect('profile')
-    })
-
     .catch(err => {
         console.log('error',err);
         res.send('Sorry, no data')
     })
 });
 
-//get quote id
-router.get('/id:', (req,res) =>{
-  db.quote.findOne({
-    where: {id : req.params.id}
-  })
-  .then((quote)=>{
-    res.render('profile', {quote})
-  })
-  .catch(err =>{
-    console.log('Error', err)
-  })
-  
-})
 
-//delete
-router.delete('/:id', (req, res) =>{
+//delete quote
+router.post('/delete/:id', (req, res) =>{
   //delete the join
-  db.quotes.destroy({
-    where: { quoteId: req.params.id}
+  db.quote.destroy({
+    where: { id: req.params.id}
   })
   .then(destroyQuote =>{
-    res.redirect('profile')
+    res.redirect('/profile')
   })
   .catch(err =>{
     res.send('error', err)
