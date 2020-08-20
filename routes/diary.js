@@ -6,12 +6,11 @@ const router = express.Router();
 router.post('/profile', (req,res)=>{
     //console.log(req.user,req.body)
     db.diary.findOrCreate({
-        where: {userId: req.user.id,
         //title,content,userID,quoteId
+        where: {userId: req.user.id,   //request from userdb
         title: req.body.title,
         content: req.body.content,
-        
-        quoteId: parseInt(req.body.quoteId)
+        quoteId: parseInt(req.body.quoteId)   //parseInt because drag from quotedb.id
         }
     
     })

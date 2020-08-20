@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
       <div class="col s12">
-        <h2 class="center-align" style="font-style: italic;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">My Secret Notes</h2> 
+        <h2 class="center-align bounce-top">My Secret Notes</h2> 
         
-        <div class="card-panel indigo darken-4">
+        <div class="card-panel indigo darken-4 center-align">
           <% if(quote.length > 0) { %>
             <span class="white-text"> 
               <% quote.forEach(q =>{ %>
@@ -19,7 +19,7 @@
                   </form>
                   <div class="well">
                     <form method="POST" action="/diary/profile">
-                      <input type="text" name="title" id="title" placeholder="Title" required>
+                      <input type="text" name="title" id="title" placeholder="Title"  required>
                       <textarea type="text" name="content" id="content" placeholder="Secret Note" required></textarea>
                       <input type="hidden" name="quoteId" id="quoteId" value="<%= q.id %> " required>
                       <button class="btn btn-primary" type="submit">Submit</button>
@@ -29,7 +29,7 @@
                   
                   <% } else { %>
                     
-                    <p>No quotes added</p>
+                    <p class="white-text">No quotes added</p>
                     <% }  %> 
                   </span>
                 </div>
