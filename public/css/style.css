@@ -4,6 +4,9 @@ body {
   background-attachment: fixed;
   
 }
+main {
+  min-height: 100vh;
+}
 
 .equal-col {
   display: flex;
