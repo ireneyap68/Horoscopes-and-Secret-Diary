@@ -73,11 +73,28 @@ app.get('/', (req, res) => {
 
 //quote route
 app.use('/quote',isLoggedIn, require('./routes/quote'));
+app.use('/diary',isLoggedIn, require('./routes/diary'));
+// app.post('/diary', (req,res)=>{
+//   db.diary.create({
+//       //title,content
+//       title: req.body.title,
+//       content: req.body.content,
+//       userId: req.user.id,
+//       quoteId: req.quote.id
+    
+//   })
+//   .then(()=>{
+//       //go back to profile
+//       res.redirect('/profile')
+//   })
+// })
+
 
 //favorite page to specific user
 app.get('/profile',isLoggedIn, (req,res) =>{
   db.quote.findAll({
-            where: {userId: req.user.id}
+    include: [db.user, db.diary]
+            // where: {userId: req.user.id}
         })
   .then((quote)=>{
     res.render('profile', {quote:quote})

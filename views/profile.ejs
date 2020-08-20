@@ -1,27 +1,44 @@
 <div class="container">
     <div class="row">
       <div class="col s12">
-        <h2 class="center-align" style="font-style: italic;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">My Secret Notes</h2>
+        <h2 class="center-align" style="font-style: italic;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">My Secret Notes</h2> 
         
-        <% if(quote.length > 0) { %>
-        <div class="card-panel blue darken-4">
-            <span class="white-text center-align">
-            <ul>
-            <% quote.forEach(q =>{ %>
-                <h5 style="font-style: italic; font-family: 'Times New Roman', Times, serif;"><%= q.content %></h5>
-                <p>Date created: <%= moment(Date()).format(shortDateFormat) %></p>
-            
-                <form method="POST" action="/quote/delete/<%= q.id %>">
+        <div class="card-panel indigo darken-4">
+          <% if(quote.length > 0) { %>
+            <span class="white-text"> 
+              <% quote.forEach(q =>{ %>
+                <h4 style="font-style: italic; font-family: 'Times New Roman', Times, serif;"><%= q.content %></h4>
+                <% q.diaries.forEach(d => { %>
+                  <h6 style="font-style: italic;">Title: <%= d.title  %> </h6>
+                  <h6 style="font-style: italic;">Secret Note: <%= d.content  %></h6>  
+                  
+                  <% }) %> 
+                  <p>Date created: <%= moment(q.createdAt).format(shortDateFormat) %></p>
+                  <form method="POST" action="/quote/delete/<%= q.id %>">
                     <input type="submit" value="Delete">
-                </form>
-            <% }) %> 
-            </ul>
-            <% } else { %>
-                 <p>No quotes added</p>
-            <% }  %> 
-            </span>
-        </div> 
-
-      </div>
-    </div>
+                  </form>
+                  <div class="well">
+                    <form method="POST" action="/diary/profile">
+                      <input type="text" name="title" id="title" placeholder="Title" required>
+                      <textarea type="text" name="content" id="content" placeholder="Secret Note" required></textarea>
+                      <input type="hidden" name="quoteId" id="quoteId" value="<%= q.id %> " required>
+                      <button class="btn btn-primary" type="submit">Submit</button>
+                    </form>
+                  </div>
+                  <% }) %> 
+                  
+                  <% } else { %>
+                    
+                    <p>No quotes added</p>
+                    <% }  %> 
+                  </span>
+                </div>
+                
+              </div> 
+            </div>
+          </div>
 </div>
+
+
+
+   

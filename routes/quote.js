@@ -42,9 +42,15 @@ router.post('/delete/:id', (req, res) =>{
   db.quote.destroy({
     where: { id: req.params.id}
   })
-  .then(destroyQuote =>{
-    res.redirect('/profile')
+  .then(()=>{
+    db.diary.destroy({
+      where: {quoteId: req.params.id}
+    })
+    .then(destroyQuote =>{
+      res.redirect('/profile')
+    })
   })
+  
   .catch(err =>{
     res.send('error', err)
   })

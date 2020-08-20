@@ -1,6 +1,8 @@
 body {
-  background-image: url(/assets/img/background.jpg);
-  background-size: cover;
+  background-image: url(/assets/img/background1_p2.jpg);
+  background-position: top;
+  background-attachment: fixed;
+  
 }
 
 .equal-col {
@@ -9,7 +11,44 @@ body {
 }
 
 .textred {
-  color: brown;
+  color: rgb(221, 25, 25);
   font-style: italic;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.blink-1 {
+	-webkit-animation: blink-1 2s infinite both;
+          animation: blink-1 2s infinite both;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-style: italic;
+          color: rgb(179, 27, 230);
+}
+
+@-webkit-keyframes blink-1 {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+@keyframes blink-1 {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+
+.well {
+  background-color: white;
+  color: black;
+  font-size: small;
 }
