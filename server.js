@@ -56,8 +56,12 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/', (req,res)=> {
+  res.render('home')
+})
+
 //homepage GET horoscopes set up for loop to dispaly each sign
-app.get('/', (req, res) => {
+app.get('/index',isLoggedIn, (req, res) => {
   const horoscopes = {};
   for (i in horos){
     const horo = horos[i];
@@ -70,6 +74,7 @@ app.get('/', (req, res) => {
     })
   } 
 });
+
 
 //quote route & diary route
 app.use('/quote',isLoggedIn, require('./routes/quote'));

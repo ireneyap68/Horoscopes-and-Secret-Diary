@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
-      <h2 class="center-align textred">Daily Horoscopes</h2>
+      <h2 class="center-align textred">Secret of Signs</h2>
       <h3 class="center-align blink-1 "><%= moment(Date()).format(shortDateFormat) %></h3>
     </div>
   </div>
@@ -13,11 +13,11 @@
           <img src="/assets/img/<%=entry%>.jpg">
         </div>
         <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4" style="text-transform: capitalize;"><%=entry%><i class="material-icons right">More</i></span>
+          <span class="card-title activator grey-text text-darken-4" style="text-transform: capitalize;"><%=entry%><i class="material-icons right" style="color: salmon;">more</i></span>
           <p><%=horoscopes[entry].date_range%></p>
         </div>
         <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4" style="text-transform: capitalize;"><%=entry%><i class="material-icons right">close</i></span>
+          <span class="card-title grey-text text-darken-4" style="text-transform: capitalize;"><%=entry%><i class="material-icons right" style="color: salmon;">close</i></span>
           <p><%=horoscopes[entry].description%></p>
           <p>Lucky number: <%= horoscopes[entry].lucky_number %></p>
           <p>Lucky color : <%= horoscopes[entry].color %></p>

@@ -5,14 +5,16 @@
             <div class="card-panel teal center-align">
             <span class="white-text">
             
-                <h5 style="font-style: italic; font-family: Arial, Helvetica, sans-serif;"><%= data.q  %></h5>
+                <h5 style="font-style: italic; font-family: Arial, Helvetica, sans-serif;">
+                    <%= data.q  %></h5>
             </br>
-                <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-style: italic;">Author: <%= data.a %></p>
+                <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-style: italic;">
+                    Author: <%= data.a %></p>
             </br>
             <form method="POST" action="/quote">
                 <input type="hidden" name="quote" value="<%= data.q %>" >
                 <input type="hidden" name="author" value="<%= data.a %> ">
-                <input class="btn btn-primary red" type="submit" value="Add to Secret Note">
+                <button class="btn btn-primary red" type="submit" value="Add to Secret Note"><i class="material-icons left" >favorite</i>Secret Note</button>
             </form>
             </span>
             </div>

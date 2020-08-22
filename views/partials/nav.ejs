@@ -1,28 +1,30 @@
 <nav>
-    <div class="nav-wrapper red darken-2">
-      <a href="/" class="brand-logo">Welcome to Secret Note</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        
-            <li><a href="/">Horoscopes</a></li>
-        <% if (!currentUser) { %>
-            <li><a href="/auth/signup">Signup</a></li>
-            <li><a href="/auth/login">Login</a></li>
-        <% } else { %>
-            <li><a href="/profile">My Secret Note</a></li>
-            <li><a href="/auth/logout">Logout</a></li>
-        
-        <% } %> 
-      </ul>
-    </div>
-  </nav>
+<div class="nav-wrapper black" >
+  <a href="/" class="brand-logo center" style="color:rgb(46, 30, 147); font-family: 'Dancing Script', cursive;" ></a>
+  <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  <ul id="nav-mobile" class="right hide-on-med-and-down" >
 
-  <ul class="sidenav" id="mobile-demo">
-    <li><a href="/">Home</a></li>
-    <% if (!currentUser) { %>
-        <li><a href="/auth/signup">Signup</a></li>
-        <li><a href="/auth/login">Login</a></li>
-      <% } else { %>
-        <li><a href="/auth/logout">Logout</a></li>
-        <li><a href="/profile">Profile</a></li>
-      <% } %>
-  </ul>
+       <li><a href="/" style="color: whitesmoke;">Home</a></li>
+   <% if (!currentUser) { %>
+       <li><a href="/auth/signup" style="color: whitesmoke;">Signup</a></li>
+       <li><a href="/auth/login" style="color: whitesmoke;">Login</a></li>
+   <% } else { %>
+      <li><a href="/index" style="color: whitesmoke;">Horoscopes</a></li>
+       <li><a href="/profile" style="color: whitesmoke;">My Secret Note</a></li>
+       <li><a href="/auth/logout" style="color: whitesmoke;">Logout</a></li>
+   
+   <% } %> 
+ </ul>
+</div>
+</nav>
+<ul class="sidenav" id="mobile-demo">
+<li><a href="/">Home</a></li>
+<% if (!currentUser) { %>
+   <li><a href="/auth/signup">Signup</a></li>
+   <li><a href="/auth/login">Login</a></li>
+ <% } else { %>
+   <li><a href="/auth/logout">Logout</a></li>
+   <li><a href="/index">Horoscopes</a></li>
+   <li><a href="/profile">Secret Note</a></li>
+ <% } %>
+</ul>

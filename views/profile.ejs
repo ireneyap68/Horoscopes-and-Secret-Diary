@@ -3,19 +3,19 @@
       <div class="col s12">
         <h2 class="center-align bounce-top">My Secret Notes</h2> 
         
-        <div class="card-panel indigo darken-4 center-align">
+        <div class="card-panel light-blue darken-4 center-align">
           <% if(quote.length > 0) { %>
             <span class="white-text"> 
               <% quote.forEach(q =>{ %>
                 <h4 style="font-style: italic; font-family: 'Times New Roman', Times, serif;"><%= q.content %></h4>
                 <p>Date created: <%= moment(q.createdAt).format(shortDateFormat) %></p>
                 <% q.diaries.forEach(d => { %>
-                  <h6 style="font-style: italic; text-align: left;">Title: <%= d.title  %> </h6>
-                  <h6 style="font-style: italic; text-align: left">Secret Note: <%= d.content  %></h6>  
+                  <h6 class="secret-note">Title: <%= d.title  %> </h6>
+                  <h6 class="secret-note">Secret Note: <%= d.content  %></h6>  
                   
                   <% }) %> 
                   <form method="POST" action="/quote/delete/<%= q.id %>">
-                    <input class="btn btn-primary red" type="submit" value="Delete">
+                    <button class="btn btn-primary " type="submit" value="Delete" ><i class="material-icons" >delete</i></button>
                   </form>
                 </br>
                   <div class="well">
@@ -23,14 +23,14 @@
                       <input type="text" name="title" id="title" placeholder="Title"  required>
                       <input type="text" name="content" id="content" placeholder="Secret Note" required>
                       <input type="hidden" name="quoteId" id="quoteId" value="<%= q.id %> " required>
-                      <button class="btn-floating btn-large waves-effect waves-light indigo darken-3" type="submit">add</button>
+                      <button class="btn-floating btn-large waves-effect waves-light " type="submit"><i class="material-icons" >send</i></button>
                     </form>
                   </div>
                   <% }) %> 
                   
                   <% } else { %>
                     
-                    <p class="white-text">No quotes added</p>
+                    <p class="white-text">No note yet! Hurry up! Make your note!</p>
                     <% }  %> 
                   </span>
                 </div>
