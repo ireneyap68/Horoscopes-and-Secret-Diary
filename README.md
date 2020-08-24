@@ -1,4 +1,5 @@
 # Project-2 [Horoscopes and Secret of the day]
+please click: https://irene-horos-secret-note.herokuapp.com/
 
 Basically, this is a Secret Note app. Users able to check daily horoscopes in the homepage and need to signup/login to access the Secrect Section (secret of the day and secret note). Secret Notes allow user to add own favorite quotes and make a secret note of the quote added.
 
