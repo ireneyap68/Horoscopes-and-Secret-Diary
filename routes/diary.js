@@ -10,7 +10,7 @@ router.post('/profile', (req,res)=>{
         where: {userId: req.user.id,   //request from userdb
         title: req.body.title,
         content: req.body.content,
-        quoteId: parseInt(req.body.quoteId)   //parseInt because drag from quotedb.id
+        quoteId: parseInt(req.body.quoteId)  //parseInt because drag from quotedb.id
         }
     
     })

@@ -3,8 +3,9 @@ const db = require('../models')
 const axios = require('axios')
 const router = express.Router()
 
-
+//get randomly quote from api
 router.get('/',  (req,res) =>{
+  //from horo request - link of the secret 
     const horo = req.query.horo;
     axios.get('https://zenquotes.io/api/random')
     .then ((response)=>{

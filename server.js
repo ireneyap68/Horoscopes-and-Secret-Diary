@@ -60,7 +60,7 @@ app.get('/', (req,res)=> {
   res.render('home')
 })
 
-//homepage GET horoscopes set up for loop to dispaly each sign
+// GET horoscopes set up for loop to dispaly each sign
 app.get('/index',isLoggedIn, (req, res) => {
   const horoscopes = {};
   for (i in horos){
@@ -85,8 +85,8 @@ app.use('/diary',isLoggedIn, require('./routes/diary'));
 //add where-userId because specific user'data been shown only if not will show full datas
 app.get('/profile',isLoggedIn, (req,res) =>{
   db.quote.findAll({
-    include: [db.user, db.diary],
-      where: {userId: req.user.id}
+    include: [db.user, db.diary], 
+      where: {userId: req.user.id} //get specific users' id
             
         })
   .then((quote)=>{

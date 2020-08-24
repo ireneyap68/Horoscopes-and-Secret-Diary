@@ -3,7 +3,7 @@ please click: https://irene-horos-secret-note.herokuapp.com/
 
 Basically, this is a Secret Note app. Users able to check daily horoscopes in the homepage and need to signup/login to access the Secrect Section (secret of the day and secret note). Secret Notes allow user to add own favorite quotes and make a secret note of the quote added.
 
-# Motive of this app : Inspirational Quotes Can Literally Change Your Day … and Your Life!
+## Motive of this app : Inspirational Quotes Can Literally Change Your Day … and Your Life!
 1. It’s easier to keep a positive frame of mind if you make Inspirational Quotes a habit.
 2. Inspirational quotes can serve as a comfort during difficult times of great personal challenges.
 3. Daily inspirations remind you that you are not alone.
